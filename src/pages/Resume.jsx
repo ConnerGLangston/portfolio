@@ -22,7 +22,7 @@ export default function Resume() {
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-3xl font-bold gradient-text">Resume</h2>
           <a
-            href="/Conner_Langston_Resume_2025.pdf"
+            href="Conner_Langston_Resume_2025.pdf"
             download
             className="btn-primary flex items-center gap-2"
           >
@@ -32,7 +32,7 @@ export default function Resume() {
 
         <div className="w-full h-[75vh] rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700">
           <iframe
-            src="/Conner_Langston_Resume_2025.pdf"
+            src="Conner_Langston_Resume_2025.pdf"
             className="w-full h-full"
             title="Resume"
           />
@@ -40,7 +40,7 @@ export default function Resume() {
 
         <div className="mt-4 text-center">
           <a
-            href="/Conner_Langston_Resume_2025.pdf"
+            href="Conner_Langston_Resume_2025.pdf"
             download
             className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
           >
