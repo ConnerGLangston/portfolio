@@ -3,7 +3,7 @@ import AnimatedRoutes from './components/AnimatedRoutes'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/portfolio">
       <AnimatedRoutes />
     </BrowserRouter>
   )

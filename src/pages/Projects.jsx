@@ -1,86 +1,87 @@
 import { motion } from 'framer-motion'
+import { CodeBracketIcon, EyeIcon } from '@heroicons/react/24/solid'
 
 const projects = [
   {
     title: 'QR Scanner Integrated App',
-    desc: 'Reduced K-5 login time from 4 min to 5 s. React + Node + PingAM + AWS S3/EC2.',
-    tech: ['React', 'Node.js', 'PingAM', 'AWS'],
+    desc: 'Reduced K-5 student login time from 4 minutes to 5 seconds with scalable QR authentication. Teacher portal for account/QR management.',
+    tech: ['React', 'Node.js', 'PingAM', 'AWS S3', 'AWS EC2', 'SHA512'],
     repo: 'https://github.com/ConnerGLangston/qr-portal',
-    demo: 'https://qr-demo.connerlangston.com'
+    demo: 'https://qr-demo.connerlangston.com',
+    featured: true,
   },
   {
     title: 'iPerf Network Optimizer',
-    desc: 'TCP throughput testing to find bottlenecks across distributed nodes.',
-    tech: ['iPerf', 'Bash', 'Python'],
-    repo: 'https://github.com/ConnerGLangston/iperf-tools'
+    desc: 'TCP throughput testing to find bottlenecks across distributed nodes for secure bandwidth allocation.',
+    tech: ['iPerf', 'Bash', 'Python', 'TCP/IP'],
+    repo: 'https://github.com/ConnerGLangston/iperf-tools',
   },
   {
     title: 'Credential Vulnerability Assessment',
-    desc: 'Static binary analysis with Ghidra & IDA Pro; brute-force & hash attacks.',
-    tech: ['Ghidra', 'IDA Pro', 'Python'],
-    repo: 'https://github.com/ConnerGLangston/cred-vuln-assess'
+    desc: 'Static binary analysis with Ghidra & IDA Pro; brute-force & hash attacks to expose password weaknesses.',
+    tech: ['Ghidra', 'IDA Pro', 'Python', 'Security Analysis'],
+    repo: 'https://github.com/ConnerGLangston/cred-vuln-assess',
   },
   {
     title: 'Intrusion Detection System',
-    desc: 'Real-time malicious traffic detection using Snort with tuned rule-sets.',
+    desc: 'Real-time malicious traffic detection using Snort with tuned rule-sets and anomaly detection.',
     tech: ['Snort', 'Linux', 'Wireshark'],
-    repo: 'https://github.com/ConnerGLangston/snort-ids'
-  }
+    repo: 'https://github.com/ConnerGLangston/snort-ids',
+  },
 ]
 
 export default function Projects() {
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="max-w-6xl mx-auto px-4 py-12"
-    >
-      <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8">Projects</h2>
-      <div className="grid md:grid-cols-2 gap-6">
-        {projects.map((p) => (
-          <Card key={p.title} {...p} />
-        ))}
-      </div>
-    </motion.section>
-  )
-}
-
-function Card({ title, desc, tech, repo, demo }) {
-  return (
-    <div className="rounded-xl border dark:border-gray-700 p-6 shadow hover:shadow-lg transition">
-      <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">{title}</h3>
-      <p className="text-gray-600 dark:text-gray-300 mb-4">{desc}</p>
-      <div className="flex flex-wrap gap-2 mb-4">
-        {tech.map((t) => (
-          <span
-            key={t}
-            className="px-2 py-1 text-xs rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300"
-          >
-            {t}
-          </span>
-        ))}
-      </div>
-      <div className="flex gap-3">
-        <a
-          href={repo}
-          target="_blank"
-          rel="noreferrer"
-          className="text-sm text-indigo-600 hover:underline"
-        >
-          GitHub
-        </a>
-        {demo && (
-          <a
-            href={demo}
-            target="_blank"
-            rel="noreferrer"
-            className="text-sm text-indigo-600 hover:underline"
-          >
-            Live Demo
-          </a>
-        )}
-      </div>
+    <div className="max-w-6xl mx-auto px-4 py-12">
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+        <h2 className="text-3xl font-bold gradient-text text-center mb-8">Projects</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {projects.map((p) => (
+            <div
+              key={p.title}
+              className={`glass card-hover p-6 ${p.featured ? 'md:col-span-2' : ''}`}
+            >
+              {p.featured && (
+                <span className="inline-block px-3 py-1 mb-3 text-xs rounded-full bg-gradient-to-r from-indigo-600 to-navy text-white">
+                  Featured Project
+                </span>
+              )}
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">{p.title}</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">{p.desc}</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {p.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="px-2 py-1 text-xs rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <div className="flex gap-3">
+                <a
+                  href={p.repo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-secondary text-sm flex items-center gap-2"
+                >
+                  <CodeBracketIcon className="w-4 h-4" /> Code
+                </a>
+                {p.demo && (
+                  <a
+                    href={p.demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-primary text-sm flex items-center gap-2"
+                  >
+                    <EyeIcon className="w-4 h-4" /> Live Demo
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
     </div>
   )
 }
